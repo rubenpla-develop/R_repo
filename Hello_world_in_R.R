@@ -29,3 +29,6 @@ DT[, .(Avg_ArrDelay = mean(na.omit(ArrDelay)))]
 
 ## [6] We'll do the same as above in [4] but renaming result fields
 DT[, .(Avg_DepDelay = mean(na.omit(DepDelay)), Avg_ArrDelay = mean(na.omit(ArrDelay)))]
+
+## [7] We'll try to show Average Dep & Arrive delays for every Carrier
+
