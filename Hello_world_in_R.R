@@ -18,7 +18,7 @@ DT[.N-2]
 ## [3] we avoid null values on 'ArrDelay' table field
 DT[, mean(na.omit(ArrDelay))]
 
-## [4] when selecting several colimns to do some stuff in 'j' part, you need to use .() notation, equals
+## [4] when selecting several columns to do some stuff in 'j' part, you need to use .() notation, equals
 ## to 'list()'.
 ## It RETURNS a DATA TABLE instead of a vector
 DT[, .(mean(na.omit(DepDelay)), mean(na.omit(ArrDelay)))]
@@ -29,6 +29,12 @@ DT[, .(Avg_ArrDelay = mean(na.omit(ArrDelay)))]
 
 ## [6] We'll do the same as above in [4] but renaming result fields
 DT[, .(Avg_DepDelay = mean(na.omit(DepDelay)), Avg_ArrDelay = mean(na.omit(ArrDelay)))]
+
+##[6b] Show list of Carriers (only unique values, as a vector)
+DT[, unique(na.omit(UniqueCarrier))]
+
+##[6c] Show list of Carriers (onely unique values, as a Data table)
+DT[, .(Carriers = unique(na.omit(UniqueCarrier)))]
 
 ## [7] We'll try to show Average Dep & Arrive delays for every Carrier
 
