@@ -37,4 +37,4 @@ DT[, unique(na.omit(UniqueCarrier))]
 DT[, .(Carriers = unique(na.omit(UniqueCarrier)))]
 
 ## [7] We'll try to show Average Dep & Arrive delays for every Carrier
-
+## Aqui realizaras el ejercicio que hicimos el otro dia
