@@ -18,6 +18,9 @@ library(data.table)
 # &le; stands for the less-than or equals sign ( ≤ )
 # &ge; stands for the greater-than or equals sign ( ≥ )
 
+## [STACKOVERFLOW] Hot questions about R Data.Table package :
+## Source : https://stackoverflow.com/questions/tagged/data.table
+
 
 ## [1] create data table from hflights and making request with 'where', 'select' & 'groupBy' params
 DT <- as.data.table(hflights)
@@ -59,6 +62,17 @@ DT[, mean(na.omit(DepDelay)), by =Origin]
 ## 'by' part  so that results if the operations  done in teh 'j' part are grouped by some condition specified
 ## NOTE : the '.()' notation needs to be used when using several columns in the 'by' part
 DT[, .(Avg_DepDelay_byWeekDays = mean(na.omit(DepDelay))), by = .(Origin, Weekdays = DayOfWeek < 6)]
+
+# Here, the average delay before departure of all planes (no subsetting in the 'i' part, so all rows are 
+# selected) was calculated first, and grouped secondly, first by origin of the plane and then by weekday. 
+# Weekdays is False in the weekends. It appears that the average delay before departure was larger when the
+# plane left from HOU than from IAH, and surprisingly the delays were smaller in the weekends.
+
+
+## [10] Putting all together as a typical DT[i, j, by] commands gives following
+DT[UniqueCarrier == 'DL', .(Avg_DepDelay = mean(na.omit(DepDelay)), Avg_ArrDelay = mean(na.omit(ArrDelay)),
+      Compensation = mean(na.omit(ArrDelay - DepDelay))), by = .(Origin, Weekdays = DayOfWeek < 6)]
+
 
 
 
