@@ -73,6 +73,9 @@ DT[, .(Avg_DepDelay_byWeekDays = mean(na.omit(DepDelay))), by = .(Origin, Weekda
 DT[UniqueCarrier == 'DL', .(Avg_DepDelay = mean(na.omit(DepDelay)), Avg_ArrDelay = mean(na.omit(ArrDelay)),
       Compensation = mean(na.omit(ArrDelay - DepDelay))), by = .(Origin, Weekdays = DayOfWeek < 6)]
 
+##[11] Basic sample, check field type (e.g. integer, character...)
+class(DT$Year)
+
 
 
 
